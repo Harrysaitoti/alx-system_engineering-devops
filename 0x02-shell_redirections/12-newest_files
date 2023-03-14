@@ -1,1 +1,2 @@
-VimCrypt~03!I¼	íH>ÅÎ§lz‰›ŒŒù':&/´¥“P  çi>×‡áÃG§§&Yğ†Ğf
+#!/bin/bash
+ls -t1 | head -n 10
