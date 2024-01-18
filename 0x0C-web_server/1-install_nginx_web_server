@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Update the package list and install nginx with the -y flag
+apt-get update -y
+apt-get install -y nginx
+
+# Create a basic HTML file with the content "Hello World!"
+echo "Hello World!" > /usr/share/nginx/html/index.html
+
+# Make sure nginx is listening on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart nginx
+service nginx restart
+
+# Test if nginx is serving the expected content
+curl -s 127.0.0.1 | grep "Hello World!" > /dev/null
+
+# Check the exit status of the curl command
+if [ $? -eq 0 ]; then
+    echo "Installation and configuration successful!"
+else
+    echo "Installation or configuration failed."
+fi
